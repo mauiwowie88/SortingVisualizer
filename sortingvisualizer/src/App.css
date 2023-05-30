@@ -14,7 +14,43 @@ body {
   margin: 10px;
 }
 
-nav {
+.menu-bar {
+  position: relative;
+}
+
+.menu-button {
+  color: #5e17ebce;
+  cursor: pointer;
+  font-size: 37px;
+  margin: 11px;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #3a44ae50;
+  padding: 0;
+  list-style-type: none;
+  margin: 0;
+}
+
+.dropdown-menu li {
+  padding: 10px;
+}
+
+.dropdown-menu a {
+  color: white;
+  text-decoration: none;
+}
+
+.menu-bar:hover .dropdown-menu {
+  display: block;
+}
+
+
+header {
   display: flex;
   justify-content: space-between;
   margin: 15px 0;
@@ -26,11 +62,43 @@ nav {
   flex-grow: 0;
 }
 
-button {
+.navigation.active {
+  left: 0;
+}
+
+.navigation li {
+  list-style: none;
+}
+
+.navigation li a {
+  display: inline-flex;
+  margin: 5px 0;
+  font-size: 2.25em;
+  text-decoration: none;
+  color: var(--black);
+  padding: 5px 20px;
+  border-radius: 40px;
+}
+
+.navigation li a:hover {
+  background: var(--black);
+  color: var(--white);
+}
+
+span {
+  overflow: hidden;
+}
+a {
+  font-size: 20px;
+  /* font */
+}
+
+.btn {
+  position: relative;
   cursor: pointer;
   margin:4px;
   width: 16.5vw;
-  height: 5.6vh;
+  height: 6.6vh;
   border-radius: 7px;
   color: rgba(255, 255, 255, 0.544);
   background-color: #3a44ae50;
@@ -40,10 +108,28 @@ button {
   letter-spacing: 2px;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding: 3px;
+  padding: 2px;
 }
 
-button:hover {
+.sliderBtn {
+  position: relative;
+  cursor: pointer;
+  margin:4px;
+  width: 16.5vw;
+  height: 6.6vh;
+  border-radius: 7px;
+  color: rgba(255, 255, 255, 0.544);
+  background-color: #3a44ae50;
+  font-size: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.548);
+  transition: all 0.3s ease-in-out;
+  letter-spacing: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 2px;
+}
+
+.btn:hover {
   background-color: #fff;
   color: #151f32;
   font-size: 25px;
@@ -51,6 +137,26 @@ button:hover {
   overflow: unset;
   width: 25.5vw;
   height: 6.6vh;
+  
+}
+
+.sliderBtn:hover {
+  background-color: #fff;
+  color: #151f32;
+  font-size: 25px;
+  box-shadow: -1px 7px 50px 0px rgba(255, 255, 255, 0.87);
+  overflow: unset;
+  width: 25.5vw;
+  height: 6.6vh;
+  
+}
+
+/* .sliderBtn:hover span {
+  font-size: 15px;
+} */
+
+a:hover {
+  
 }
 
 #main {

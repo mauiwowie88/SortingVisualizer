@@ -8,10 +8,19 @@ function App() {
     const [array, setArray] = useState([]);
     const [size, setSize] = useState(22);
     const [speed, setSpeed] = useState(100);
+    const [waiting, setWaiting] = useState();
     
     function generateArray() {
       const newArray = Array.from({ length: size }, () => Math.random());
       setArray(newArray);
+    }
+
+    function randomizer() {
+      const randomIndex = Math.floor(Math.random() * size);
+      const randomHeight = Math.random();
+      // newArray[randomIndex] = randomHeight;
+      // showBars();
+      console.log('hello')
     }
 
     function start() {
@@ -100,26 +109,31 @@ function App() {
     useEffect(() => {
       generateArray();
       showBars();
+      randomizer();
     }, [size]);
 
     return (
       <div id="home">
-        <nav>
-          <img src={logo} alt="logo" style={{ width: '240px' }}/>
-          <div>
-            <button>Bubble</button>
-            <button>Selection</button>
-            <button>Insertion</button>
-            <button>Merge</button>
-            <button>Quick</button>
-          </div>
-        </nav>
+          <header>
+            <img src={logo} alt="logo" style={{ width: '240px' }}/>
+            <div class="menu-bar">
+              <i class="fa-solid fa-bars menu-button"></i>
+              <ul class="dropdown-menu">
+                <button class="btn">Bubble</button>
+                <button class="btn">Selection</button>
+                <button class="btn">Insertion</button>
+                <button class="btn">Merge</button>
+                <button class="btn">Quick</button>
+              </ul>
+            </div>
+          </header>
+
         <div id="main">
           <div id="container"></div>
           <div id="settings">
-            <button id="start" onClick={start}>Start</button>
-            <button id="play" onClick={sort}>Sort</button>
-            <button id="size">Size: <span id="size_value">{size}</span></button>
+            <button class="btn" onClick={start}>Start</button>
+            <button class="btn" onClick={sort}>Sort</button>
+            <button class="sliderBtn"><a>Size: </a><span>{size}</span></button>
             <input
               type="range"
               id="size_slider"
@@ -127,7 +141,7 @@ function App() {
               value={size}
               onChange={handleSizeChange}
             />
-            <button id="speed">Speed: <span id="speed_value">{speed}</span></button>
+            <button class="sliderBtn"><a>Speed: </a><span>{speed}</span></button>
             <input 
               type="range" 
               id="speed_slider" 
