@@ -1,38 +1,94 @@
-.App {
-  text-align: center;
+/* Styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background: linear-gradient(#e664644f, #9198e5);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#home {
+  margin: 10px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+nav {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
+  margin: 15px 0;
+}
+
+#logo {
+  height: 80px;
+  width: 200px;
+  flex-grow: 0;
+}
+
+button {
+  cursor: pointer;
+  margin:4px;
+  width: 16.5vw;
+  height: 5.6vh;
+  border-radius: 7px;
+  color: rgba(255, 255, 255, 0.544);
+  background-color: #3a44ae50;
+  font-size: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.548);
+  transition: all 0.3s ease-in-out;
+  letter-spacing: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 3px;
+}
+
+button:hover {
+  background-color: #fff;
+  color: #151f32;
+  font-size: 25px;
+  box-shadow: -1px 7px 50px 0px rgba(255, 255, 255, 0.87);
+  overflow: unset;
+  width: 25.5vw;
+  height: 6.6vh;
+}
+
+#main {
+  margin-top: 100px;
+}
+
+#container {
+  height: 200px;
+  display: flex;
+  align-items: flex-end;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  overflow: auto;
 }
 
-.App-link {
-  color: #61dafb;
+#settings {
+  display: flex;
+  justify-content: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.bar {
+  flex-shrink: 1;
+  border: 1px solid rgb(34, 23, 98);
+  color: #162b52;
+  width: 4vw;
+  background-color: rgb(125, 239, 239);
+  transition: all .5s ease-in-out;
+  font-size: 1px;
+  text-align: center;
+  border-radius: 8px 8px 0px 0px;
+  margin: 0 1px;
+}
+
+.bar:hover {
+  cursor: pointer;
+  padding: 7px;
+  width: 4.3vw !important;
+  font-weight: bold;
+  font-size: 1em;
+  margin: 0 3px;
+  box-shadow: -1px 4px 30px 0px rgba(255, 255, 255, 0.87);
 }
