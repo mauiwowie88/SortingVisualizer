@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import logo from "./images/logo.png";
 import Settings from "./Components/Settings";
+import logo from "./images/logo.png";
 
 function App() {
 	const [array, setArray] = useState([]);
