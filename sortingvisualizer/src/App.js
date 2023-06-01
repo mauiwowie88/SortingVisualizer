@@ -2,11 +2,12 @@ import "./App.css";
 import logo from "./images/logo.png";
 import React, { useState, useEffect } from "react";
 import Settings from "./Components/Settings";
+import { bubbleSort } from "./sortingFunctions";
 
 function App() {
 	const [array, setArray] = useState([]);
 	const [size, setSize] = useState(11);
-	const [speed, setSpeed] = useState(1111);
+	const [speed, setSpeed] = useState(111);
 	const [moves, setMoves] = useState([]);
 	const [colorIndices, setColorIndices] = useState([]);
 
@@ -35,23 +36,6 @@ function App() {
 		animate(moves);
 	}
 
-	// function animate(moves) {
-	// 	if (moves.length === 0) return;
-
-	// 	const copy = [...array];
-	// 	const move = moves[0];
-	// 	const [i, j] = move.indices;
-	// 	const bars = document.getElementsByClassName("bar");
-
-	// 	console.log(move);
-
-	// 	// setTimeout(function () {
-	// 	// 	bars[i].style.backgroundColor = "rgba(125, 239, 239, 0.867)";
-	// 	// 	bars[j].style.backgroundColor = "rgba(125, 239, 239, 0.867)";
-	// 	// 	setArray(copy);
-	// 	// 	animate(moves.slice(1));
-	// 	// }, speed);
-	// }
 	function animate(moves) {
 		if (moves.length === 0) return;
 
