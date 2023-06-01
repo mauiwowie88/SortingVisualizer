@@ -4,6 +4,7 @@ body {
 	background: linear-gradient(#e664644f, #9198e5);
 	background-repeat: no-repeat;
 	margin: 15px;
+	height: 100vh;
 }
 
 header {
@@ -71,21 +72,22 @@ button:hover {
 	align-items: flex-end;
 	justify-content: center;
 	overflow-y: auto;
-	padding: 20px;
-	margin-top: 69px;
+	margin: 20px;
+	padding: 40px 10px 10px 10px;
 }
 
 #settings {
 	display: flex;
 	justify-content: center;
+	margin: 20px;
 }
 
 .bar {
 	flex-shrink: 1;
-	border: 1px solid rgb(34, 23, 98);
+	border: 1px solid rgba(0, 0, 0, 0.477);
 	color: #162b52;
 	width: 4vw;
-	background-color: rgba(125, 239, 239, 0.867);
+	background-color: rgba(0, 255, 255, 0.776);
 	/* transition: all 0.2s cubic-bezier(0.17, 0.67, 0.83, 0.67); */
 	font-size: 1px;
 	text-align: center;
@@ -97,6 +99,7 @@ button:hover {
 	padding: 7px;
 	width: 4.3vw !important;
 	font-weight: bold;
+	color: rgba(255, 255, 255, 0.548);
 	font-size: 2em;
 	margin: 0 3px;
 	box-shadow: -1px 4px 30px 0px rgba(255, 255, 255, 0.87);
