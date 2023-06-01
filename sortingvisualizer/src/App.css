@@ -85,7 +85,7 @@ button:hover {
 .bar {
 	flex-shrink: 1;
 	border: 1px solid rgba(0, 0, 0, 0.477);
-	color: #162b52;
+	color: #3a44ae50;
 	width: 4vw;
 	background-color: rgba(0, 255, 255, 0.776);
 	/* transition: all 0.2s cubic-bezier(0.17, 0.67, 0.83, 0.67); */

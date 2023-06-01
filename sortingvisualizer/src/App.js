@@ -5,8 +5,8 @@ import Settings from "./Components/Settings";
 
 function App() {
 	const [array, setArray] = useState([]);
-	const [size, setSize] = useState(88);
-	const [speed, setSpeed] = useState(8);
+	const [size, setSize] = useState(11);
+	const [speed, setSpeed] = useState(1111);
 	const [moves, setMoves] = useState([]);
 	const [colorIndices, setColorIndices] = useState([]);
 
@@ -35,40 +35,47 @@ function App() {
 		animate(moves);
 	}
 
+	// function animate(moves) {
+	// 	if (moves.length === 0) return;
+
+	// 	const copy = [...array];
+	// 	const move = moves[0];
+	// 	const [i, j] = move.indices;
+	// 	const bars = document.getElementsByClassName("bar");
+
+	// 	console.log(move);
+
+	// 	// setTimeout(function () {
+	// 	// 	bars[i].style.backgroundColor = "rgba(125, 239, 239, 0.867)";
+	// 	// 	bars[j].style.backgroundColor = "rgba(125, 239, 239, 0.867)";
+	// 	// 	setArray(copy);
+	// 	// 	animate(moves.slice(1));
+	// 	// }, speed);
+	// }
 	function animate(moves) {
 		if (moves.length === 0) return;
 
 		const copy = [...array];
 		const move = moves[0];
 		const [i, j] = move.indices;
+		const bars = document.getElementsByClassName("bar");
 
 		if (move.type === "swap") {
-			const bars = document.getElementsByClassName("bar");
-			bars[i].style.backgroundColor = "green";
-			bars[j].style.backgroundColor = "green";
 			[array[i], array[j]] = [array[j], array[i]];
 			setArray(copy);
-
-			setTimeout(function () {
-				bars[i].style.backgroundColor = "rgba(125, 239, 239, 0.867)";
-				bars[j].style.backgroundColor = "rgba(125, 239, 239, 0.867)";
-				setArray(copy);
-				animate(moves.slice(1));
-			}, speed);
-		}
-		if (move.type === "compare") {
-			const bars = document.getElementsByClassName("bar");
 			bars[i].style.backgroundColor = "blue";
 			bars[j].style.backgroundColor = "blue";
-			setArray(copy);
-
-			setTimeout(function () {
-				bars[i].style.backgroundColor = "rgba(125, 239, 239, 0.867)";
-				bars[j].style.backgroundColor = "rgba(125, 239, 239, 0.867)";
-				animate(moves.slice(1));
-				setArray(copy);
-			}, speed);
 		}
+		if (move.type === "compare") {
+			bars[i].style.backgroundColor = "green";
+			bars[j].style.backgroundColor = "green";
+			setArray(copy);
+		}
+		setTimeout(function () {
+			bars[i].style.backgroundColor = "cyan";
+			setArray(copy);
+			animate(moves.slice(1));
+		}, speed);
 	}
 
 	function bubbleSort(array) {
@@ -138,7 +145,7 @@ function App() {
 						type="range"
 						id="size_slider"
 						min="11"
-						max="150"
+						max="111"
 						value={size}
 						onChange={handleSizeChange}
 					/>
@@ -149,7 +156,7 @@ function App() {
 						type="range"
 						id="speed_slider"
 						min="-111"
-						max="1000"
+						max="1111"
 						value={speed}
 						onChange={handleSpeedChange}
 					/>
