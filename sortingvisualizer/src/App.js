@@ -60,20 +60,24 @@ function App() {
 		const [i, j] = move.indices;
 		const bars = document.getElementsByClassName("bar");
 
+		console.log(move.indices);
+
 		if (move.type === "swap") {
 			[array[i], array[j]] = [array[j], array[i]];
-			setArray(copy);
+			bars[i].style.backgroundColor = "green";
+			bars[j].style.backgroundColor = "green";
+		} else if (move.type === "compare") {
 			bars[i].style.backgroundColor = "blue";
 			bars[j].style.backgroundColor = "blue";
 		}
-		if (move.type === "compare") {
-			bars[i].style.backgroundColor = "green";
-			bars[j].style.backgroundColor = "green";
-			setArray(copy);
-		}
+
+		setArray(copy);
+
 		setTimeout(function () {
-			bars[i].style.backgroundColor = "cyan";
 			setArray(copy);
+			bars[i].style.backgroundColor = "cyan";
+			bars[j].style.backgroundColor = "cyan";
+
 			animate(moves.slice(1));
 		}, speed);
 	}
