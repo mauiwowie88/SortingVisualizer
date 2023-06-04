@@ -33,26 +33,59 @@ export const insertionSort = (array) => {
 };
 
 export const mergeSort = (array) => {
-	const moves = [];
+	if (array.length <= 1) {
+		return [];
+	}
 
-	const merge = (left, right) => {
-		const sorted = [];
-		while (left.length && right.length) {
-			const smaller = left[0] < right[0] ? left : right;
-			sorted.push(smaller.shift());
-			moves.push({ indices: [left.length, right.length], type: "compare" });
+	const mid = Math.floor(array.length / 2);
+	const [left, right] = [array.slice(0, mid), array.slice(mid)];
+	const [leftSteps, rightSteps] = [mergeSort(left), mergeSort(right)];
+
+	let merged = [];
+	let [leftIndex, rightIndex] = [0, 0];
+
+	while (leftIndex < left.length && rightIndex < right.length) {
+		const [leftValue, rightValue] = [left[leftIndex], right[rightIndex]];
+
+		if (leftValue < rightValue) {
+			merged.push({
+				indices: [leftIndex, rightIndex + left.length],
+				type: "compare",
+			});
+			leftIndex++;
+		} else {
+			merged.push({
+				indices: [leftIndex, rightIndex + left.length],
+				type: "swap",
+			});
+			merged.push({
+				indices: [rightIndex + left.length, leftIndex],
+				type: "swap",
+			});
+			[left[leftIndex], right[rightIndex]] = [right[rightIndex], left[leftIndex]];
+			leftIndex++;
 		}
-		return sorted.concat(left.length ? left : right);
-	};
+	}
 
-	const sort = (array) => {
-		if (array.length <= 1) return array;
-		const mid = Math.floor(array.length / 2);
-		return merge(sort(array.slice(0, mid)), sort(array.slice(mid)));
-	};
+	merged = merged
+		.concat(
+			left
+				.slice(leftIndex)
+				.map((_, i) => ({
+					indices: [i + leftIndex, i + leftIndex],
+					type: "compare",
+				}))
+		)
+		.concat(
+			right
+				.slice(rightIndex)
+				.map((_, i) => ({
+					indices: [i + left.length + rightIndex, i + left.length + rightIndex],
+					type: "compare",
+				}))
+		);
 
-	sort(array);
-	return moves;
+	return merged.concat(leftSteps, rightSteps);
 };
 
 export const quickSort = (array) => {

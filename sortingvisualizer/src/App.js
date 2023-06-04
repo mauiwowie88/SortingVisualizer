@@ -14,8 +14,6 @@ function App() {
 	const [array, setArray] = useState([]);
 	const [size, setSize] = useState(11);
 	const [speed, setSpeed] = useState(111);
-	// const [moves, setMoves] = useState([]);
-	// const [swap, setSwap] = useState("");
 
 	function generateArray() {
 		const newArray = Array.from({ length: size }, () => Math.random());
@@ -39,6 +37,7 @@ function App() {
 	function sort() {
 		const copy = [...array];
 		const moves = bubbleSort(copy);
+		console.log(moves);
 		animate(moves);
 	}
 
@@ -49,12 +48,8 @@ function App() {
 		const move = moves[0];
 		const [i, j] = move.indices;
 		const bars = document.getElementsByClassName("bar");
-		if (move.type === "swap") {
-			[array[i], array[j]] = [array[j], array[i]];
-			bars[i].style.backgroundColor = "red";
-		} else {
-			bars[i].style.backgroundColor = "green";
-		}
+		if (move.type === "swap") [array[i], array[j]] = [array[j], array[i]];
+		bars[i].style.backgroundColor = "green";
 
 		setTimeout(function () {
 			bars[i].style.backgroundColor = "cyan";
