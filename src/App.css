@@ -1,48 +1,63 @@
 /*** Styling ***/
 
-body {
+body,
+html {
+  margin: 0;
+  padding: 0;
   background: linear-gradient(#e664644f, #9198e5);
   background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
 }
 
 header {
-  border: 2px solid black;
+  padding: 1rem;
 }
 
 nav {
   display: flex;
   flex-wrap: wrap;
+  padding: 1rem;
   gap: 1rem;
-
-  margin: 0;
-  padding: 0;
   list-style: none;
   border: 2px solid rgb(255, 72, 72);
+  justify-content: space-around;
 }
 
 nav li {
-  flex-grow: 1;
-  flex-shrink: 1;
+  padding: 0.2rem;
+  flex: 1;
+  text-align: center;
   border: 2px solid green;
 }
 
-#columns {
+footer {
+  padding: 0.5rem;
+  border: 2px solid black;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  list-style: none;
+}
+
+/* #columns {
   display: flex;
   gap: 2rem;
-}
+} */
 
-#columns > * {
+/* #columns > * {
   flex-shrink: 1;
-}
+} */
 
-#card {
+/* #card {
   border: 2px solid yellow;
-}
+} */
 
 button {
   position: relative;
   cursor: pointer;
-  margin: 4px;
   width: 16.5vw;
   height: 6.6vh;
   border-radius: 7px;
@@ -51,10 +66,8 @@ button {
   font-size: 20px;
   border: 2px solid rgba(255, 255, 255, 0.548);
   transition: all 0.3s ease-in-out;
-  letter-spacing: 2px;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding: 2px;
 }
 
 button:hover {
@@ -67,30 +80,28 @@ button:hover {
   height: 6.6vh;
 }
 
-#dropdown-btn {
+/* #dropdown-btn {
   width: 90px;
-}
+} */
 
-#dropdown-btn:hover {
+/* #dropdown-btn:hover {
   width: 115px;
   color: #3a44ae50;
-}
+} */
 
 #visualizer {
-  height: 500px;
+  padding: 2rem;
+  height: 400px;
   display: flex;
   align-items: flex-end;
   justify-content: center;
   overflow-y: auto;
-  margin: 20px;
-  padding: 40px 10px 10px 10px;
 }
 
-#settings {
+/* #settings {
   display: flex;
   justify-content: center;
-  margin: 20px;
-}
+} */
 
 .bar {
   flex-shrink: 1;
@@ -98,13 +109,12 @@ button:hover {
   color: #3a44ae50;
   width: 4vw;
   background-color: rgba(0, 255, 255, 0.776);
-  /* transition: all 0.2s cubic-bezier(0.17, 0.67, 0.83, 0.67); */
   font-size: 1px;
   text-align: center;
   border-radius: 8px 8px 0px 0px;
 }
 
-.bar:hover {
+/* .bar:hover {
   cursor: pointer;
   padding: 7px;
   width: 4.3vw !important;
@@ -113,4 +123,4 @@ button:hover {
   font-size: 2em;
   margin: 0 3px;
   box-shadow: -1px 4px 30px 0px rgba(255, 255, 255, 0.87);
-}
+} */

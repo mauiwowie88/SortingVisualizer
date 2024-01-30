@@ -13,6 +13,7 @@ export default function App() {
   const [size, setSize] = useState(11);
   const [speed, setSpeed] = useState(111);
   const [algo, setAlgo] = useState(null);
+  const [highlightedBars, setHighlightedBars] = useState([]);
   const [array, setArray] = useState(
     Array.from({ length: size }, () => Math.random())
   );
@@ -37,26 +38,32 @@ export default function App() {
   };
 
   function sort() {
-    const copy = [...array];
-    const moves = copy;
+    const moves = [...array];
     animate(moves);
   }
 
   function animate(moves) {
-    if (moves.length === 0) return;
+    console.log(moves);
+    // if (moves.length === 0) return;
 
-    const copy = [...array];
-    const move = moves[0];
-    const [i, j] = move.indices;
-    const bars = document.getElementsByClassName("bar");
-    if (move.type === "swap") [array[i], array[j]] = [array[j], array[i]];
-    bars[i].style.backgroundColor = "green";
+    // const move = moves[0];
+    // const [i, j] = move.indices;
 
-    setTimeout(function () {
-      bars[i].style.backgroundColor = "cyan";
-      animate(moves.slice(1));
-    }, speed);
-    setArray(copy);
+    // if (move.type === "swap") {
+    //   const newBarArray = [...array];
+    //   [newBarArray[i], newBarArray[j]] = [newBarArray[j], newBarArray[i]];
+    //   setArray(newBarArray);
+    // }
+
+    // // Highlight the bar at index i
+    // setHighlightedBars((prev) => {
+    //   const newHighlighted = new Array(array.length).fill(false);
+    //   newHighlighted[i] = true;
+    //   return newHighlighted;
+    // });
+
+    // // Schedule the next animation step
+    // setTimeout(() => animate(moves.slice(1)), speed);
   }
 
   useEffect(() => {
@@ -74,6 +81,7 @@ export default function App() {
               className="bar"
               style={{
                 height: `${value * 100}%`,
+                backgroundColor: highlightedBars[index] ? "green" : "cyan",
               }}
             >
               {(value * 100).toFixed(0)}
