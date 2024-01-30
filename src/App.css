@@ -70,7 +70,7 @@ button {
   text-overflow: ellipsis;
 }
 
-button:hover {
+/* button:hover {
   background-color: #fff;
   color: #151f32;
   font-size: 25px;
@@ -78,7 +78,7 @@ button:hover {
   overflow: unset;
   width: 25.5vw;
   height: 6.6vh;
-}
+} */
 
 /* #dropdown-btn {
   width: 90px;

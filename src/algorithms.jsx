@@ -1,6 +1,11 @@
 /*** Sorting Functions ***/
 
 export const bubbleSort = (array) => {
+  if (!array || !array.length) {
+    // Handle the case where 'array' is null or empty.
+    console.error("The input array is null or empty.");
+    return [];
+  }
   const moves = [];
   let swapped;
   do {

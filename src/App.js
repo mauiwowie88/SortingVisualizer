@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Visualizer from "./Components/Visualizer";
 import Settings from "./Components/Settings";
 import Header from "./Components/Header";
 import {
@@ -13,7 +14,7 @@ export default function App() {
   const [size, setSize] = useState(11);
   const [speed, setSpeed] = useState(111);
   const [algo, setAlgo] = useState(null);
-  const [highlightedBars, setHighlightedBars] = useState([]);
+  const [currentIndices, setCurrentIndices] = useState([]);
   const [array, setArray] = useState(
     Array.from({ length: size }, () => Math.random())
   );
@@ -24,7 +25,7 @@ export default function App() {
   }
 
   function changeStyle(newStyle) {
-    setAlgo(newStyle);
+    setAlgo(() => newStyle);
   }
 
   const handleSizeChange = (event) => {
@@ -38,32 +39,25 @@ export default function App() {
   };
 
   function sort() {
-    const moves = [...array];
-    animate(moves);
+    const moves = algo([...array]);
+    animate(moves, 0);
   }
 
-  function animate(moves) {
-    console.log(moves);
-    // if (moves.length === 0) return;
+  function animate(moves, index) {
+    if (index >= moves.length) return;
+    const move = moves[index];
+    const newArray = [...array];
 
-    // const move = moves[0];
-    // const [i, j] = move.indices;
+    if (move.type === "swap") {
+      [newArray[move.indices[0]], newArray[move.indices[1]]] = [
+        newArray[move.indices[1]],
+        newArray[move.indices[0]],
+      ];
+    }
+    setCurrentIndices(move.indices);
+    setArray(newArray);
 
-    // if (move.type === "swap") {
-    //   const newBarArray = [...array];
-    //   [newBarArray[i], newBarArray[j]] = [newBarArray[j], newBarArray[i]];
-    //   setArray(newBarArray);
-    // }
-
-    // // Highlight the bar at index i
-    // setHighlightedBars((prev) => {
-    //   const newHighlighted = new Array(array.length).fill(false);
-    //   newHighlighted[i] = true;
-    //   return newHighlighted;
-    // });
-
-    // // Schedule the next animation step
-    // setTimeout(() => animate(moves.slice(1)), speed);
+    setTimeout(() => animate(moves, index + 1), speed);
   }
 
   useEffect(() => {
@@ -72,23 +66,8 @@ export default function App() {
 
   return (
     <div id="app">
-      <Header newStyle={changeStyle} />
-      <div id="main">
-        <div id="visualizer">
-          {array.map((value, index) => (
-            <div
-              key={index}
-              className="bar"
-              style={{
-                height: `${value * 100}%`,
-                backgroundColor: highlightedBars[index] ? "green" : "cyan",
-              }}
-            >
-              {(value * 100).toFixed(0)}
-            </div>
-          ))}
-        </div>
-      </div>
+      <Header changeStyle={changeStyle} />
+      <Visualizer array={array} currentIndices={currentIndices} />
       <Settings
         start={generateArray}
         sort={sort}

@@ -1,8 +1,14 @@
 import React from "react";
 import logo from "../images/logo.png";
+import {
+  bubbleSort,
+  insertionSort,
+  mergeSort,
+  quickSort,
+  selectionSort,
+} from "../algorithms";
 
 export default function Header({ newStyle }) {
-  // console.log(newStyle);
   return (
     <header>
       <img src={logo} alt="logo" style={{ width: "240px" }} />
@@ -12,19 +18,23 @@ export default function Header({ newStyle }) {
 
       <nav>
         <li>
-          <button onClick={() => newStyle("bubbleSort")}>Bubble Sort</button>
+          <button onClick={() => changeStyle(bubbleSort)}>Bubble Sort</button>
         </li>
         <li>
-          <button>Selection Sort</button>
+          <button onClick={() => changeStyle(selectionSort)}>
+            Selection Sort
+          </button>
         </li>
         <li>
-          <button>Insertion Sort</button>
+          <button onClick={() => changeStyle(insertionSort)}>
+            Insertion Sort
+          </button>
         </li>
         <li>
-          <button>Merge Sort</button>
+          <button onClick={() => changeStyle(mergeSort)}>Merge Sort</button>
         </li>
         <li>
-          <button>Quick Sort</button>
+          <button onClick={() => changeStyle(quickSort)}>Quick Sort</button>
         </li>
       </nav>
     </header>
