@@ -1,18 +1,16 @@
-// function Visualizer({ array, moves }) {
-// 	return (
-// 		<div id="visualizer">
-// 			{array.map((value, index) => (
-// 				<div
-// 					key={index}
-// 					className={`bar ${colorIndices.includes(index) ? "swap" : "compare"}`}
-// 					style={{
-// 						height: `${value * 100}%`,
-// 					}}>
-// 					{(value * 100).toFixed(0)}
-// 				</div>
-// 			))}
-// 		</div>
-// 	);
-// }
+import { useEffect, useState } from "react";
+import Bar from "./Bar";
 
-// export default Visualizer;
+export default function Visualizer({ array, currentIndices }) {
+  return (
+    <div id="visualizer">
+      {array.map((value, index) => (
+        <Bar
+          key={index}
+          height={(value * 100).toFixed(0)}
+          highlight={currentIndices.includes(index)}
+        />
+      ))}
+    </div>
+  );
+}
