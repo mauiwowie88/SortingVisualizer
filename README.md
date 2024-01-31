@@ -11,7 +11,7 @@
 Built with :heart: for students and novice programmers, this tool is more than just a visualizer - it's your companion in the exciting journey of learning and understanding a fundamental concept in computer science and a stepping stone into the universe of algorithmic thinking. Whether you're a student grappling with the basics or a new programmer sharpening your skills, visualizing these algorithms can transform abstract concepts into tangible understanding.
 
 ## Features:
-**Visualize Common Sorting Algorithms:** Experience algorithms like Bubble Sort, Merge Sort, Quick Sort, under the hood!
+**Visualize Sorting Algorithms:** Experience algorithms like Bubble Sort, Merge Sort, Quick Sort, under the hood!
 
 **Future Updates:** We're not stopping here! Planned future updates include visualizing list and tree traversals.
 
