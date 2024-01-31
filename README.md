@@ -13,7 +13,7 @@ Built with :heart: for students and novice programmers, this tool is more than j
 ## Features:
 **Visualize Sorting Algorithms:** Experience algorithms like Bubble Sort, Merge Sort, Quick Sort, under the hood!
 
-**Future Updates:** We're not stopping here! Planned future updates include visualizing list and tree traversals.
+**Future Updates:** We're not stopping here! Planned future updates include Visualizing List and Tree Traversals.
 
 ## Getting Started:
 
