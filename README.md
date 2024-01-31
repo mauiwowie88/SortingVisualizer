@@ -1,59 +1,57 @@
-Sorting Algorithm Visualizer :bar_chart: :sparkles:
-Welcome to the World of Algorithms!
-About the Project :books:
-Sorting Algorithm Visualizer is your go-to interactive guide designed to unravel the mysteries of sorting algorithms! Built with :heart: for students and budding programmers, this tool is more than just a visualizer - it's your companion in the exciting journey of learning and understanding the fundamental algorithms that power the digital world.
+# Sorting Algorithm Visualizer :bar_chart:
 
-Why Sorting Algorithms?
-Sorting is a fundamental concept in computer science and a stepping stone into the universe of algorithmic thinking. Whether you're a student grappling with the basics or a new programmer sharpening your skills, visualizing these algorithms can transform abstract concepts into tangible understanding.
+## Table of Contents
+- [About the Project](#about-the-project)
+- [Features](#features)
+- [Getting Started](#getting-started)
+- [How it Works](#how-it-works)
 
-Features :sparkler:
-Visualize Common Sorting Algorithms: Experience algorithms like Bubble Sort, Merge Sort, Quick Sort, and more in action!
-Interactive and Fun: Who says learning can't be fun? Our playful and interactive interface makes learning a joy.
-Step-by-Step Explanation: Each step in the algorithm is explained in a beginner-friendly way, making complex concepts accessible.
-Future Updates: We're not stopping here! Planned future updates include visualizing list and tree traversals.
-Getting Started :rocket:
-Embarking on your algorithm adventure is super easy! Follow these simple steps:
 
-Clone the Repository
+## About the Project
+Built with :heart: for students and novice programmers, this tool is more than just a visualizer - it's your companion in the exciting journey of learning and understanding a fundamental concept in computer science and a stepping stone into the universe of algorithmic thinking. Whether you're a student grappling with the basics or a new programmer sharpening your skills, visualizing these algorithms can transform abstract concepts into tangible understanding.
 
-sh
-Copy code
-git clone https://github.com/mauiwowie88/sorting-visualizer.git
-Navigate to the Project Directory
+## Features:
+**Visualize Common Sorting Algorithms:** Experience algorithms like Bubble Sort, Merge Sort, Quick Sort, and more in action!
 
-sh
-Copy code
-cd sorting-visualizer
-Install Dependencies
+**Future Updates:** We're not stopping here! Planned future updates include visualizing list and tree traversals.
 
-sh
-Copy code
-npm install
-Run the Application
+## Getting Started:
 
-sh
-Copy code
-npm start
-Voilà! You're all set to play with the algorithms!
+### Prerequisites:
+- **Node.js:** This project requires you to have [Node.js](https://nodejs.org/en). 
 
-How to Use :question:
-Select an Algorithm: Choose from a variety of sorting algorithms.
-Adjust the Parameters: Customize the size and speed of the visualization.
-Watch, Learn, and Experiment: Observe how different algorithms sort data in real-time and experiment with different configurations.
-Contributing :handshake:
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
+  - *Download and install it for running the application and managing dependencies.*
+ 
+- **Code Editor:** You will also need a code editor like [Visual Studio Code](https://code.visualstudio.com/).
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. Don't forget to give the project a star! Thanks again!
+  - *Download and install for writing and navigating through the project's codebase.*
 
-Fork the Project
-Create your Feature Branch (git checkout -b feature/AmazingFeature)
-Commit your Changes (git commit -m 'Add some AmazingFeature')
-Push to the Branch (git push origin feature/AmazingFeature)
-Open a Pull Request
-License :scroll:
-Distributed under the MIT License. See LICENSE for more information.
+### Installation:
+1. Clone the Repository
+    ```
+    git clone https://github.com/mauiwowie88/sorting-visualizer.git
+    ```
+2. Open your Command Line & Paste Cloned Repo
+3. Navigate to the Project Directory
+    ```
+    cd sorting-visualizer
+    ```
+4. Open Project in Code Editor
+    ```
+    code .
+    ```
+5. Install Dependencies
+    ```
+    npm i
+    ```
+6. Start Application
+    ```
+    npm start
+    ```
 
-Contact :mailbox:
-Project Link: https://github.com/your-username/sorting-visualizer
+## How it Works:
+1. **Select an Algorithm:** Choose from a variety of sorting algorithms.
+2. **Adjust the Parameters:** Customize the size and speed of the visualization.
+3. **Watch, Learn, and Experiment:** Observe how different algorithms sort data in real-time and 
 
 Happy Coding! :keyboard:
