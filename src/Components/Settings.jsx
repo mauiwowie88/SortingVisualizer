@@ -7,7 +7,7 @@ export default function Settings({
   changeSpeed,
 }) {
   return (
-    <footer id="settings">
+    <div id="settings">
       <li>
         <button onClick={start}>Start</button>
       </li>
@@ -15,10 +15,6 @@ export default function Settings({
         <button onClick={sort}>Sort</button>
       </li>
       <li>
-        {" "}
-        <button className="sliderBtn">
-          Size: <span>{size}</span>
-        </button>
         <input
           type="range"
           id="size_slider"
@@ -29,10 +25,6 @@ export default function Settings({
         />
       </li>
       <li>
-        {" "}
-        <button className="sliderBtn">
-          Speed: <span>{speed}</span>
-        </button>
         <input
           type="range"
           id="speed_slider"
@@ -42,6 +34,6 @@ export default function Settings({
           onChange={changeSpeed}
         />
       </li>
-    </footer>
+    </div>
   );
 }

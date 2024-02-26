@@ -1,45 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Visualizer from "./Components/Visualizer";
-import Settings from "./Components/Settings";
-import Header from "./Components/Header";
-import {
-  bubbleSort,
-  insertionSort,
-  mergeSort,
-  quickSort,
-  selectionSort,
-} from "./algorithms";
+import Navbar from "./Components/Navbar";
 
 export default function App() {
-  const [size, setSize] = useState(11);
-  const [speed, setSpeed] = useState(111);
-  const [algo, setAlgo] = useState(null);
-  const [currentIndices, setCurrentIndices] = useState([]);
-  const [array, setArray] = useState(
-    Array.from({ length: size }, () => Math.random())
+  return (
+    <div id="app">
+      <Navbar />
+      <Visualizer />
+    </div>
   );
+}
 
-  function generateArray() {
-    const newArray = Array.from({ length: size }, () => Math.random());
-    setArray(newArray);
-  }
-
-  function changeStyle(newStyle) {
-    setAlgo(() => newStyle);
-  }
-
-  const handleSizeChange = (event) => {
-    const newSize = parseInt(event.target.value);
-    setSize(newSize);
-  };
-
-  const handleSpeedChange = (event) => {
-    const newSpeed = parseInt(event.target.value);
-    setSpeed(newSpeed);
-  };
+/*
 
   function sort() {
-    const moves = algo([...array]);
+    const moves = bubbleSort([...array]);
     animate(moves, 0);
   }
 
@@ -60,22 +35,4 @@ export default function App() {
     setTimeout(() => animate(moves, index + 1), speed);
   }
 
-  useEffect(() => {
-    generateArray();
-  }, [size]);
-
-  return (
-    <div id="app">
-      <Header changeStyle={changeStyle} />
-      <Visualizer array={array} currentIndices={currentIndices} />
-      <Settings
-        start={generateArray}
-        sort={sort}
-        size={size}
-        speed={speed}
-        changeSize={handleSizeChange}
-        changeSpeed={handleSpeedChange}
-      />
-    </div>
-  );
-}
+*/
