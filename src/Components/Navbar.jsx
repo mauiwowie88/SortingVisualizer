@@ -1,52 +1,45 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import dataStructures from "../dataStructures";
 import logo from "../images/logo.png";
 
-export default function Navbar(props) {
+const DropdownItem = ({ title, children }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  console.log(children);
   return (
-    <nav>
-      <ul>
-        <li>Trees</li>
-        <li>Linked Lists</li>
-        <li>Sorting Algorithms</li>
-      </ul>
-    </nav>
+    <div className="dropdown-item">
+      <button onClick={() => setIsOpen(!isOpen)}>{title}</button>
+      {isOpen && <div className="dropdown-content">{children}</div>}
+    </div>
   );
-}
+};
 
-/*
-import DropMenu from "./DropMenu";
+export default function Navbar() {
+  const [isNavOpen, setIsNavOpen] = useState(false);
+
+  useEffect(() => {
+    const closeNav = (event) => {
+      if (event.target.closest(".navbar") === null) setIsNavOpen(false);
+    };
+    window.addEventListener("click", closeNav);
+    return () => window.removeEventListener("click", closeNav);
+  }, []);
 
   return (
-    <nav className="navbar" onMouseLeave={hideDropdown}>
+    <nav className={`navbar ${isNavOpen ? "active" : ""}`}>
+      <img src={logo} alt="logo" id="logo" />
       <button
-        id="drop-btn"
-        onClick={showDropdown}
-        onMouseEnter={() => setShowMenu(true)}
+        className={`icon ${isNavOpen ? "hide" : ""}`}
+        onClick={() => setIsNavOpen(!isNavOpen)}
       >
-        <i className="fa-solid fa-bars"></i>
+        ☰{" "}
       </button>
-      {showMenu && <DropMenu changeStyle={changeStyle} />}
+      {isNavOpen && (
+        <div className="dropdown">
+          {Object.keys(dataStructures).map((type) => (
+            <DropdownItem title={type} key={type}></DropdownItem>
+          ))}
+        </div>
+      )}
     </nav>
-  );
-
-  function Item(props) {
-  return (
-    <li className="item">
-      <a href="#" className="icon-btn">
-        {props.icon}
-      </a>
-    </li>
   );
 }
-
-  const [showMenu, setShowMenu] = useState(false);
-
-  const showDropdown = () => setShowMenu(true);
-  const hideDropdown = () => setShowMenu(false);
-
-  return (
-    <nav className="navbar">
-      <ul className="list">{props}</ul>
-    </nav>
-  );
-*/

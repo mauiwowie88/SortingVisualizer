@@ -1,6 +1,18 @@
 import { useEffect, useState } from "react";
 import Settings from "./Settings";
-import Bar from "./Bar";
+
+// Bar Component
+const Bar = ({ height, highlight }) => {
+  const style = {
+    height: `${height}%`,
+    backgroundColor: highlight ? "green" : "cyan",
+  };
+  return (
+    <div style={style} className="bar">
+      {style.height}
+    </div>
+  );
+};
 
 export default function Visualizer() {
   const [size, setSize] = useState(11);
@@ -34,7 +46,7 @@ export default function Visualizer() {
   }, [size]);
 
   return (
-    <section id="main">
+    <>
       <div id="visualizer">
         {array.map((value, index) => (
           <Bar
@@ -52,6 +64,6 @@ export default function Visualizer() {
         changeSize={handleSizeChange}
         changeSpeed={handleSpeedChange}
       />
-    </section>
+    </>
   );
 }
