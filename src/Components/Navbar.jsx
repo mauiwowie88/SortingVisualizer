@@ -12,7 +12,7 @@ const Item = ({ title, children, onClick, selected }) => {
     <div className="dropdown-item">
       <button onClick={handleClick}>{title}</button>
       {isOpen && selected === title && (
-        <div>
+        <div className="dropdownExtra">
           {Object.keys(children).map((childKey) => (
             <button key={childKey}>{childKey}</button>
           ))}
