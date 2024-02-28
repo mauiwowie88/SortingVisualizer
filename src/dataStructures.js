@@ -1,3 +1,5 @@
+import { trees, linkedLists, sortingAlgorithms } from "./algorithms";
+
 const dataStructures = {
   trees: {
     binaryTree: {
@@ -23,12 +25,31 @@ const dataStructures = {
 
   sortingAlgorithms: {
     bubbleSort: {
-      complexity: "O(n^2)",
+      algo: sortingAlgorithms.bubbleSort,
+      time: "O(n^2)",
+      space: "O(n^2)",
+    },
+    insertionSort: {
+      algo: sortingAlgorithms.insertionSort,
+      time: "O(n^2)",
+      space: "O(n^2)",
+    },
+    mergeSort: {
+      algo: sortingAlgorithms.mergeSort,
+      time: "O(n^2)",
+      space: "O(n^2)",
     },
     quickSort: {
-      complexity: "O(n log n)",
+      algo: sortingAlgorithms.quickSort,
+      time: "O(n^2)",
+      space: "O(n^2)",
+    },
+    selectionSort: {
+      algo: sortingAlgorithms.selectionSort,
+      time: "O(n^2)",
+      space: "O(n^2)",
     },
   },
 };
-
+console.log(sortingAlgorithms);
 export default dataStructures;

@@ -6,7 +6,7 @@ html {
   background: linear-gradient(#e664644f, #9198e5);
 }
 
-#app {
+#root {
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -16,11 +16,16 @@ html {
   display: flex;
   position: relative;
   align-items: center;
+  justify-content: space-between;
+
   margin-top: 0.8rem;
   height: 50px;
-
-  justify-content: space-between;
   padding: 1em;
+}
+
+.navbar.active .dropdown {
+  display: flex;
+  flex-direction: column;
 }
 
 #logo {
@@ -42,11 +47,7 @@ html {
 }
 
 .dropdown {
-  display: none;
-  position: absolute;
-  right: 0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-  list-style: none;
 }
 
 .dropdown-item button {
@@ -54,11 +55,6 @@ html {
   border: none;
   padding: 0.5em 1em;
   cursor: pointer;
-}
-
-.navbar.active .dropdown {
-  display: flex;
-  flex-direction: column;
 }
 
 #visualizer {

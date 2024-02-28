@@ -1,28 +1,46 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import dataStructures from "../dataStructures";
 import logo from "../images/logo.png";
 
-const DropdownItem = ({ title, children }) => {
+const Item = ({ title, children, onClick, selected }) => {
   const [isOpen, setIsOpen] = useState(false);
-  console.log(children);
+  const handleClick = () => {
+    onClick(title);
+    setIsOpen(!isOpen);
+  };
   return (
     <div className="dropdown-item">
-      <button onClick={() => setIsOpen(!isOpen)}>{title}</button>
-      {isOpen && <div className="dropdown-content">{children}</div>}
+      <button onClick={handleClick}>{title}</button>
+      {isOpen && selected === title && (
+        <div>
+          {Object.keys(children).map((childKey) => (
+            <button key={childKey}>{childKey}</button>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
 
 export default function Navbar() {
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const [title, setTitle] = useState("Data Structures");
+  const menuRef = useRef();
 
   useEffect(() => {
-    const closeNav = (event) => {
-      if (event.target.closest(".navbar") === null) setIsNavOpen(false);
+    let handler = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target))
+        setIsNavOpen(false);
     };
-    window.addEventListener("click", closeNav);
-    return () => window.removeEventListener("click", closeNav);
+    document.addEventListener("mousedown", handler);
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
   }, []);
+
+  const handleClick = (title) => {
+    setTitle(title);
+  };
 
   return (
     <nav className={`navbar ${isNavOpen ? "active" : ""}`}>
@@ -34,9 +52,16 @@ export default function Navbar() {
         ☰{" "}
       </button>
       {isNavOpen && (
-        <div className="dropdown">
+        <div className="dropdown" ref={menuRef}>
+          <h3>{title}</h3>
           {Object.keys(dataStructures).map((type) => (
-            <DropdownItem title={type} key={type}></DropdownItem>
+            <Item
+              title={type}
+              key={type}
+              children={dataStructures[type]}
+              onClick={handleClick}
+              selected={title}
+            />
           ))}
         </div>
       )}
