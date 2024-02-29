@@ -2,22 +2,39 @@ import React, { useEffect, useState, useRef } from "react";
 import ds from "../dataStructures";
 import logo from "../images/logo.png";
 
-const Item = ({ title, onClick }) => {
-  return (
-    <div className="dropdown-item">
-      <button onClick={() => onClick(title)}>{title}</button>
-    </div>
-  );
-};
-
 export default function Navbar() {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [title, setTitle] = useState("Data Structures");
+  const [dataStructure, setDataStructure] = useState(ds);
+  const [stack, setStack] = useState([title]);
   const menuRef = useRef();
 
   const handleClick = (key) => {
-    setTitle(key);
+    const nextStructure = dataStructure[key];
+    if (typeof nextStructure === "object" && !Array.isArray(nextStructure)) {
+      setStack((stack) => [...stack, key]);
+      setDataStructure(nextStructure);
+      setTitle(key);
+    }
   };
+
+  const handleBack = () => {
+    setStack((prevStack) => {
+      if (prevStack.length <= 1) return prevStack;
+      const newStack = prevStack.slice(0, -1);
+      let newStructure = ds;
+      for (let i = 1; i < newStack.length; i++) {
+        newStructure = newStructure[newStack[i]];
+      }
+      setDataStructure(newStructure);
+      setTitle(newStack[newStack.length - 1]);
+      return newStack;
+    });
+  };
+
+  const renderedItems = Object.keys(dataStructure).map((type) => (
+    <Item title={type} key={type} onClick={handleClick} />
+  ));
 
   useEffect(() => {
     let handler = (e) => {
@@ -33,20 +50,27 @@ export default function Navbar() {
   return (
     <nav className={`navbar ${isNavOpen ? "active" : ""}`}>
       <img src={logo} alt="logo" id="logo" />
-      <input
-        type="button"
+      <button
         className={`icon ${isNavOpen ? "hide" : ""}`}
         onClick={() => setIsNavOpen(!isNavOpen)}
-        value="☰"
-      />
+      >
+        ☰
+      </button>
       {isNavOpen && (
         <div className="dropdown" ref={menuRef}>
           <h3>{title}</h3>
-          {Object.keys(ds).map((type) => (
-            <Item title={type} key={type} onClick={handleClick} />
-          ))}
+          {renderedItems}
+          {stack.length > 1 && <button onClick={handleBack}>Back</button>}
         </div>
       )}
     </nav>
   );
 }
+
+const Item = ({ title, onClick }) => {
+  return (
+    <div className="item">
+      <button onClick={() => onClick(title)}>{title}</button>
+    </div>
+  );
+};
