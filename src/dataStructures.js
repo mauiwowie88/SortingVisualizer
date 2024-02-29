@@ -1,55 +1,55 @@
 import { trees, linkedLists, sortingAlgorithms } from "./algorithms";
 
 const dataStructures = {
-  trees: {
-    binaryTree: {
+  Trees: {
+    "Binary Tree": {
       searches: ["pre-order", "in-order", "post-order", "level-order"],
       insert: true,
       delete: true,
     },
-    binarySearchTree: {
+    "Binary Search Tree": {
       searches: ["in-order", "search"],
       insert: true,
       delete: true,
     },
   },
 
-  linkedLists: {
-    singlyLinkedList: {
+  "Linked Lists": {
+    "Singly Linked List": {
       methods: ["insert", "delete", "reverse"],
     },
-    doublyLinkedList: {
+    "Doubly Linked List": {
       methods: ["insert", "delete", "reverse"],
     },
   },
 
-  sortingAlgorithms: {
-    bubbleSort: {
+  "Sorting Algorithms": {
+    "Bubble Sort": {
       algo: sortingAlgorithms.bubbleSort,
       time: "O(n^2)",
       space: "O(n^2)",
     },
-    insertionSort: {
+    "Insertion Sort": {
       algo: sortingAlgorithms.insertionSort,
       time: "O(n^2)",
       space: "O(n^2)",
     },
-    mergeSort: {
+    "Merge Sort": {
       algo: sortingAlgorithms.mergeSort,
       time: "O(n^2)",
       space: "O(n^2)",
     },
-    quickSort: {
+    "Quick Sort": {
       algo: sortingAlgorithms.quickSort,
       time: "O(n^2)",
       space: "O(n^2)",
     },
-    selectionSort: {
+    "Selection Sort": {
       algo: sortingAlgorithms.selectionSort,
       time: "O(n^2)",
       space: "O(n^2)",
     },
   },
 };
-console.log(sortingAlgorithms);
+
 export default dataStructures;

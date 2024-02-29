@@ -1,23 +1,11 @@
 import React, { useEffect, useState, useRef } from "react";
-import dataStructures from "../dataStructures";
+import ds from "../dataStructures";
 import logo from "../images/logo.png";
 
-const Item = ({ title, children, onClick, selected }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const handleClick = () => {
-    onClick(title);
-    setIsOpen(!isOpen);
-  };
+const Item = ({ title, onClick }) => {
   return (
     <div className="dropdown-item">
-      <button onClick={handleClick}>{title}</button>
-      {isOpen && selected === title && (
-        <div className="dropdownExtra">
-          {Object.keys(children).map((childKey) => (
-            <button key={childKey}>{childKey}</button>
-          ))}
-        </div>
-      )}
+      <button onClick={() => onClick(title)}>{title}</button>
     </div>
   );
 };
@@ -26,6 +14,10 @@ export default function Navbar() {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [title, setTitle] = useState("Data Structures");
   const menuRef = useRef();
+
+  const handleClick = (key) => {
+    setTitle(key);
+  };
 
   useEffect(() => {
     let handler = (e) => {
@@ -38,30 +30,20 @@ export default function Navbar() {
     };
   }, []);
 
-  const handleClick = (title) => {
-    setTitle(title);
-  };
-
   return (
     <nav className={`navbar ${isNavOpen ? "active" : ""}`}>
       <img src={logo} alt="logo" id="logo" />
-      <button
+      <input
+        type="button"
         className={`icon ${isNavOpen ? "hide" : ""}`}
         onClick={() => setIsNavOpen(!isNavOpen)}
-      >
-        ☰{" "}
-      </button>
+        value="☰"
+      />
       {isNavOpen && (
         <div className="dropdown" ref={menuRef}>
           <h3>{title}</h3>
-          {Object.keys(dataStructures).map((type) => (
-            <Item
-              title={type}
-              key={type}
-              children={dataStructures[type]}
-              onClick={handleClick}
-              selected={title}
-            />
+          {Object.keys(ds).map((type) => (
+            <Item title={type} key={type} onClick={handleClick} />
           ))}
         </div>
       )}

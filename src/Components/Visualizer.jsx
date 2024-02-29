@@ -5,11 +5,10 @@ import Settings from "./Settings";
 const Bar = ({ height, highlight }) => {
   const style = {
     height: `${height}%`,
-    backgroundColor: highlight ? "green" : "cyan",
   };
   return (
     <div style={style} className="bar">
-      {style.height}
+      {height}
     </div>
   );
 };
@@ -49,11 +48,7 @@ export default function Visualizer() {
     <>
       <div id="visualizer">
         {array.map((value, index) => (
-          <Bar
-            key={index}
-            height={(value * 100).toFixed(0)}
-            highlight={currentIndices.includes(index)}
-          />
+          <Bar key={index} height={(value * 100).toFixed(0)} />
         ))}
       </div>
       <Settings
