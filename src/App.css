@@ -18,12 +18,14 @@ html {
   align-items: center;
   justify-content: space-between;
   align-items: flex-start;
-  height: 50px;
-  padding: 1em;
+  height: 0;
 }
 
 .dropdown {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  min-height: 12rem;
+  min-width: 12rem;
 }
 
 .item button {
@@ -35,6 +37,7 @@ html {
 #logo {
   width: 9rem;
   height: 4rem;
+  margin: 1em;
 }
 
 .icon {
@@ -42,6 +45,7 @@ html {
   border: none;
   font-size: 1.5em;
   cursor: pointer;
+  margin: 1em;
 }
 
 .icon.hide {
@@ -50,15 +54,18 @@ html {
 
 /*  Visualizer  */
 #visualizer {
-  padding: 2rem;
-  height: 60vh;
+  margin-top: 100px;
+  padding: 1rem;
+  height: 70%;
   display: flex;
   align-items: flex-end;
   flex: 1;
   overflow: hidden;
+  justify-content: center;
 }
 
 .bar {
+  height: 100%;
   flex-grow: 1;
   text-align: center;
   font-size: 1px;
@@ -78,4 +85,5 @@ html {
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  bottom: 0;
 }
