@@ -4,10 +4,6 @@ export default function Navbar({ data, title, stack, forward, backward }) {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const menuRef = useRef();
 
-  // const renderedItems = Object.keys(data).map((type) => (
-  //   <Item title={type} key={type} onClick={forward} />
-  // ));
-
   const renderedItems = Object.keys(data).map((type) => (
     <div className="item" key={type}>
       <button onClick={() => forward(type)}>{type}</button>
@@ -43,11 +39,3 @@ export default function Navbar({ data, title, stack, forward, backward }) {
     </nav>
   );
 }
-
-// const Item = ({ title, onClick }) => {
-//   return (
-//     <div className="item">
-//       <button onClick={() => onClick(title)}>{title}</button>
-//     </div>
-//   );
-// };
