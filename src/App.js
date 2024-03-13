@@ -1,6 +1,7 @@
 import { useEffect, useState, useReducer } from "react";
 /*  COMPONENTS  */
 import Navbar from "./Components/Navbar";
+import Navbar2 from "./Components/Navbar2";
 import Visualizer from "./Components/Visualizer";
 import Settings from "./Components/Settings";
 /*  HOOKS && REDUCERS  */
@@ -39,14 +40,15 @@ export default function App() {
   }, [generateArray]);
 
   return (
-    <>
-      <Navbar
+    <div>
+      <Navbar2 />
+      {/* <Navbar
         data={navigateState.data}
         title={navigateState.title}
         stack={navigateState.stack}
         forward={handleClick}
         backward={handleBack}
-      />
+      /> */}
       <Visualizer array={array} />
       <Settings
         start={generateArray}
@@ -56,6 +58,6 @@ export default function App() {
         changeSize={handleSizeChange}
         changeSpeed={handleSpeedChange}
       />
-    </>
+    </div>
   );
 }
