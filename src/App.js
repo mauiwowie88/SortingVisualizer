@@ -1,52 +1,32 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useReducer } from "react";
+/*  COMPONENTS  */
 import Navbar from "./Components/Navbar";
+import Visualizer from "./Components/Visualizer";
 import Settings from "./Components/Settings";
-import data from "./data/dataStructures";
+/*  HOOKS && REDUCERS  */
+import useArrayGenerator from "./hooks/useArrayGenerator";
+import { INITIAL_STATE, changeStructure } from "./reducers/navReducer";
 
 export default function App() {
-  const [size, setSize] = useState(11);
+  const { array, size, generateArray, updateSize } = useArrayGenerator(11);
   const [speed, setSpeed] = useState(111);
-  const [array, setArray] = useState(
-    Array.from({ length: size }, () => Math.random())
-  );
-  const [dataStructure, setDataStructure] = useState(data);
-  const [title, setTitle] = useState("Data Structures");
-  const [stack, setStack] = useState([title]);
+  const [navigateState, dispatch] = useReducer(changeStructure, INITIAL_STATE);
 
   const handleClick = (key) => {
-    const nextStructure = dataStructure[key];
-    if (typeof nextStructure === "object" && !Array.isArray(nextStructure)) {
-      setStack((stack) => [...stack, key]);
-      setDataStructure(nextStructure);
-      setTitle(key);
-    }
+    dispatch({ type: "FORWARD", key });
   };
 
   const handleBack = () => {
-    setStack((prevStack) => {
-      if (prevStack.length <= 1) return prevStack;
-      const newStack = prevStack.slice(0, -1);
-      let newStructure = data;
-      for (let i = 1; i < newStack.length; i++) {
-        newStructure = newStructure[newStack[i]];
-      }
-      setDataStructure(newStructure);
-      setTitle(newStack[newStack.length - 1]);
-      return newStack;
-    });
+    dispatch({ type: "BACK" });
   };
 
   function sort() {
     console.log("sorting");
   }
 
-  const renderBars = array.map((value, index) => (
-    <Bar key={index} height={(value * 100).toFixed(0)} />
-  ));
-
   const handleSizeChange = (event) => {
     const newSize = parseInt(event.target.value);
-    setSize(newSize);
+    updateSize(newSize);
   };
 
   const handleSpeedChange = (event) => {
@@ -54,26 +34,20 @@ export default function App() {
     setSpeed(newSpeed);
   };
 
-  const generateArray = useCallback(() => {
-    const newArray = Array.from({ length: size }, () => Math.random());
-    setArray(newArray);
-  }, [size]);
-
   useEffect(() => {
     generateArray();
-  }, [size, generateArray]);
+  }, [generateArray]);
 
   return (
     <>
       <Navbar
-        title={title}
-        ds={dataStructure}
-        stack={stack}
+        data={navigateState.data}
+        title={navigateState.title}
+        stack={navigateState.stack}
         forward={handleClick}
         backward={handleBack}
       />
-      <div id="visualizer">{renderBars}</div>
-
+      <Visualizer array={array} />
       <Settings
         start={generateArray}
         sort={sort}
@@ -85,15 +59,3 @@ export default function App() {
     </>
   );
 }
-
-// Bar Component
-const Bar = ({ height }) => {
-  const style = {
-    height: `${height}%`,
-  };
-  return (
-    <div style={style} className="bar">
-      {height}
-    </div>
-  );
-};
