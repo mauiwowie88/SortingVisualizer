@@ -1,19 +1,23 @@
 import React, { useEffect, useState, useRef } from "react";
 
 export default function Navbar({ data, title, stack, forward, backward }) {
-  const [isNavOpen, setIsNavOpen] = useState(false);
+  const [toggleNav, setToggleNav] = useState(false);
   const menuRef = useRef();
 
   const renderedItems = Object.keys(data).map((type) => (
-    <div className="item" key={type}>
+    <li className="item" key={type}>
       <button onClick={() => forward(type)}>{type}</button>
-    </div>
+    </li>
   ));
 
   useEffect(() => {
     let handler = (e) => {
-      if (menuRef.current && !menuRef.current.contains(e.target))
-        setIsNavOpen(false);
+      if (
+        !e.target.closest(".icon") &&
+        menuRef.current &&
+        !menuRef.current.contains(e.target)
+      )
+        setToggleNav(false);
     };
     document.addEventListener("mousedown", handler);
     return () => {
@@ -22,18 +26,20 @@ export default function Navbar({ data, title, stack, forward, backward }) {
   }, []);
 
   return (
-    <nav className={`navbar ${isNavOpen ? "active" : ""}`}>
-      <h1>{title}</h1>
-      <button
-        className={`icon ${isNavOpen ? "hide" : ""}`}
-        onClick={() => setIsNavOpen(!isNavOpen)}
-      >
-        ☰
-      </button>
-      {isNavOpen && (
-        <div className="dropdown" ref={menuRef}>
-          {renderedItems}
-          {stack.length > 1 && <button onClick={backward}>Back</button>}
+    <nav className="navbar">
+      <a href="/">{title}</a>
+      {!toggleNav ? (
+        <button className="icon" onClick={() => setToggleNav(true)}>
+          ☰
+        </button>
+      ) : (
+        <div>
+          <button className="icon" onClick={backward}>
+            ⬅
+          </button>
+          <ul className="dropdown" ref={menuRef}>
+            {renderedItems}
+          </ul>
         </div>
       )}
     </nav>

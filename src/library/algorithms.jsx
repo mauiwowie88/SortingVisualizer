@@ -4,6 +4,7 @@ export const linkedLists = {};
 
 export const sortingAlgorithms = {
   bubbleSort(array) {
+    console.log("1");
     if (!array || !array.length) {
       console.error("The input array is null or empty.");
       return [];
@@ -26,6 +27,7 @@ export const sortingAlgorithms = {
   },
 
   insertionSort(array) {
+    console.log("2");
     const moves = [];
     for (let i = 1; i < array.length; i++) {
       let j = i;

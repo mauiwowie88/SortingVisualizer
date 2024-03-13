@@ -14,18 +14,14 @@ html {
 /*  Navbar  */
 .navbar {
   display: flex;
-  position: relative;
-  align-items: center;
-  justify-content: space-between;
-  align-items: flex-start;
   height: 0;
 }
 
 .dropdown {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   padding: 1rem;
-  min-height: 12rem;
-  min-width: 12rem;
+  right: 0;
+  position: absolute;
 }
 
 .item button {
@@ -34,22 +30,15 @@ html {
   cursor: pointer;
 }
 
-#logo {
-  width: 9rem;
-  height: 4rem;
-  margin: 1em;
-}
-
 .icon {
+  position: absolute;
   background: none;
+  cursor: pointer;
   border: none;
   font-size: 1.5em;
-  cursor: pointer;
   margin: 1em;
-}
-
-.icon.hide {
-  display: none;
+  right: 0;
+  z-index: 1;
 }
 
 /*  Visualizer  */
