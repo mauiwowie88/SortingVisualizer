@@ -1,9 +1,8 @@
-/*** Styling ***/
-
-body,
-html {
+* {
   margin: 0;
-  background: linear-gradient(#e664644f, #9198e5);
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
 }
 
 #root {
@@ -11,68 +10,12 @@ html {
   height: 100vh;
 }
 
-/*  Navbar  */
-.navbar {
-  display: flex;
-  height: 0;
+.container {
+  height: 100vh;
+  background: linear-gradient(#ffffff64, #0e0e12);
 }
 
-.dropdown {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-  padding: 1rem;
-  right: 0;
-  position: absolute;
-}
-
-.item button {
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.icon {
-  position: absolute;
-  background: none;
-  cursor: pointer;
-  border: none;
-  font-size: 1.5em;
-  margin: 1em;
-  right: 0;
-  z-index: 1;
-}
-
-/*  Visualizer  */
-#visualizer {
-  margin-top: 100px;
-  padding: 1rem;
-  height: 70%;
-  display: flex;
-  align-items: flex-end;
-  flex: 1;
-  overflow: hidden;
-  justify-content: center;
-}
-
-.bar {
-  height: 100%;
-  flex-grow: 1;
-  text-align: center;
-  font-size: 1px;
-  border: 1px solid rgba(0, 0, 0, 0.477);
-  background-color: rgba(0, 255, 255, 0.776);
-  border-radius: 8px 8px 0px 0px;
-  transition: 0.2s ease;
-}
-
-.bar:hover {
-  background-color: white;
-  font-size: 16px;
-}
-
-#settings {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  bottom: 0;
+.container.dark {
+  height: 100vh;
+  background: linear-gradient(#0e0e12, #ffffff64);
 }

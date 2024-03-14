@@ -1,85 +1,52 @@
-import { useEffect, useState, useReducer } from "react";
-
-/*  COMPONENTS  */
-import Navbar from "./Components/Navbar";
-import Visualizer from "./Components/Visualizer";
-import Settings from "./Components/Settings";
-
-import dataStructures, {
-  trees,
-  linkedLists,
-  sortingAlgorithms,
-} from "./library/algorithms";
-
-/*  HOOKS && REDUCERS  */
+import React, { useState, useEffect, useReducer } from "react";
+import Navbar from "./components/Navbar/Navbar";
+import Visualizer from "./components/Visualizer/Visualizer";
+import Settings from "./components/Settings/Settings";
+import useTheme from "./hooks/useTheme";
+import useSpeed from "./hooks/useSpeed";
+import useSorting from "./hooks/useSorting";
 import useArrayGenerator from "./hooks/useArrayGenerator";
-import useSortingVisualizer from "./hooks/useSorting";
-import { INITIAL_STATE, changeStructure } from "./reducers/navReducer";
+import { changeStructure, INITIAL_STATE } from "./reducers/navReducer";
 
 export default function App() {
-  const [speed, setSpeed] = useState(111);
-  const [state, dispatch] = useReducer(changeStructure, INITIAL_STATE);
-  const [algo, setAlgo] = useState();
+  const [nav, setNav] = useState(false);
+  const [theme, setTheme] = useTheme();
+  const [speed, setSpeed] = useSpeed();
   const { array, size, generateArray, updateSize } = useArrayGenerator(11);
-  const { sortingArray, startSort, isSorting } = useSortingVisualizer(
-    array,
-    speed,
-    sortingAlgorithms.bubbleSort
-  );
+  const [state, dispatch] = useReducer(changeStructure, INITIAL_STATE);
+  const { handleSort } = useSorting(state.algo);
 
-  const handleClick = (key) => {
-    dispatch({ type: "FORWARD", key });
-  };
+  const handleForward = (key) => dispatch({ type: "FORWARD", key });
+  const handleBack = () => dispatch({ type: "BACK" });
 
-  const handleBack = () => {
-    dispatch({ type: "BACK" });
-  };
-
-  const handleSort = () => {
-    if (typeof algo === "function") {
-      algo(array);
-    } else {
-      console.error("Algo is not a function, it is:", typeof algo);
-    }
-  };
-
-  const handleSizeChange = (event) => {
-    const newSize = parseInt(event.target.value);
-    updateSize(newSize);
-  };
-
-  const handleSpeedChange = (event) => {
-    const newSpeed = parseInt(event.target.value);
-    setSpeed(newSpeed);
-  };
-
-  useEffect(() => {
-    setAlgo(sortingAlgorithms[state.algo]);
-  }, [state.algo]);
+  const handleSizeChange = (event) => updateSize(parseInt(event.target.value));
+  const handleSpeedChange = (event) => setSpeed(parseInt(event.target.value));
 
   useEffect(() => {
     generateArray();
   }, [generateArray]);
 
   return (
-    <>
+    <div className={`container ${theme}`}>
       <Navbar
-        data={state.data}
-        title={state.title}
-        stack={state.stack}
-        algo={state.algo}
-        forward={handleClick}
+        data={state}
+        forward={handleForward}
         backward={handleBack}
+        theme={theme}
+        setTheme={setTheme}
+        nav={nav}
+        setNav={setNav}
       />
-      <Visualizer array={array} />
+      <Visualizer array={array} theme={theme} />
       <Settings
         start={generateArray}
-        sort={handleSort}
+        sort={() => handleSort(array)}
         size={size}
         speed={speed}
         changeSize={handleSizeChange}
         changeSpeed={handleSpeedChange}
+        theme={theme}
       />
-    </>
+    </div>
   );
 }
