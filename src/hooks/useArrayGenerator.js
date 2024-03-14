@@ -7,7 +7,9 @@ const useArrayGenerator = (defaultSize) => {
   );
 
   const generateArray = useCallback(() => {
-    setArray(Array.from({ length: size }, () => Math.random()));
+    setArray(
+      Array.from({ length: size }, () => (Math.random() * 100).toFixed(0))
+    );
   }, [size]);
 
   const updateSize = (newSize) => {

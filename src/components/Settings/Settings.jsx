@@ -1,3 +1,5 @@
+import "./Settings.css";
+
 export default function Settings({
   start,
   sort,
@@ -5,12 +7,17 @@ export default function Settings({
   speed,
   changeSize,
   changeSpeed,
+  theme,
 }) {
   return (
     <div id="settings">
-      <button onClick={start}>Start</button>
+      <button className={`settings-btn ${theme}`} onClick={start}>
+        Start
+      </button>
 
-      <button onClick={sort}>Sort</button>
+      <button className={`settings-btn ${theme}`} onClick={sort}>
+        Sort
+      </button>
 
       <input
         type="range"
