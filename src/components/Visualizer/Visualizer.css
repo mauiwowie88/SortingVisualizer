@@ -21,14 +21,14 @@
   transition: 0.2s ease;
 }
 
+.bar:hover {
+  background-color: #fff;
+  font-size: 2em;
+}
+
 .dark .bar {
   background-color: #fff;
   border: 1px solid #898989;
-}
-
-.bar:hover {
-  background-color: #fff;
-  font-size: 16px;
 }
 
 .dark .bar:hover {

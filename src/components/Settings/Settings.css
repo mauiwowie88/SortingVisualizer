@@ -1,7 +1,13 @@
 #settings {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 1rem;
+}
+
+.settings-btn:hover {
+  background-color: #4a4a4a;
+  border: 1px solid #fff;
 }
 
 .settings-btn {
@@ -9,7 +15,6 @@
   color: #333;
   border: none;
   padding: 10px 20px;
-  font-size: 16px;
   font-weight: bold;
   border-radius: 5px;
   cursor: pointer;
@@ -18,11 +23,16 @@
   gap: 10px;
 }
 
-.settings-btn:hover {
-  background-color: #4a4a4a; /* Slightly lighter grey for hover effect */
-  color: #fff;
-  border: 1px solid #fff;
+.slider {
+  background-color: #fff;
+  border-radius: 5px;
 }
+
+.slider span {
+  margin: 0 19px;
+}
+
+/*  Dark Mode  */
 
 .dark .settings-btn {
   background-color: #333;
@@ -33,4 +43,9 @@
   color: #333;
   background-color: #b9b9b9;
   border: 1px solid #333;
+}
+
+.dark .slider {
+  background-color: #333;
+  color: #fff;
 }
